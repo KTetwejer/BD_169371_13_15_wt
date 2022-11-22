@@ -1,0 +1,24 @@
+Zadanie 1
+a) SELECT * FROM postac WHERE rodzaj='wiking' ORDER BY wiek DESC; 
+  DELETE FROM postac WHERE wiek >= 35 AND rodzaj='wiking';
+  
+b)ALTER TABLE przetwory DROP CONSTRAINT przetwory_ibfk_1;
+ALTER TABLE przetwory DROP CONSTRAINT przetwory_ibfk_2;
+ALTER TABLE walizka DROP CONSTRAINT walizka_ibfk_1;
+ALTER TABLE postac MODIFY id_postaci INT NOT NULL;
+ALTER TABLE postac DROP PRIMARY KEY;
+
+Zadanie 2
+a) ALTER TABLE postac ADD PESEL VARCHAR(11) NOT NULL;
+ALTER TABLE postac MODIFY pesel VARCHAR(11) NOT NULL PRIMARY KEY;
+
+b) ALTER TABLE postac MODIFY rodzaj ENUM ('wiking','ptak','kobieta','syrena');
+
+c) INSERT INTO postac (id_postaci, nazwa, rodzaj,funkcja, pesel ) VALUES (10,"Gertruda_Nieszczera",'syrena', 'brak', '777' );
+
+Zadanie 3
+a) UPDATE postac SET statek ='ORP Orzel' WHERE nazwa regexp 'a';
+
+b) UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE data_wodowania >= '1901-01-01' and data_wodowania <='2000-12-31';
+
+c)
