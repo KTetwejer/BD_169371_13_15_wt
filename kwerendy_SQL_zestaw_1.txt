@@ -1,6 +1,7 @@
 Zadanie 1
 
-1. CREATE TABLE postac ( id_postaci INT AUTO_INCREMENT PRIMARY KEY, 
+1. CREATE TABLE postac ( 
+id_postaci INT AUTO_INCREMENT PRIMARY KEY, 
 nazwa VARCHAR(40), 
 rodzaj ENUM('wiking', 'ptak', 'kobieta'), 
 data_ur DATE, 
@@ -37,3 +38,36 @@ PRIMARY KEY (adres_budynku, nazwa_izby)
 2. ALTER TABLE izba ADD COLUMN kolor_izby VARCHAR(15) DEFAULT('czarny') AFTER metraz;
 
 3. INSERT INTO izba(adres_budynku, nazwa_izby, metraz, kolor_izby, wlasciciel) VALUES('Ogrodowa 7', 'Spizarnia', 6, 'szary', 'Bjorn');
+
+Zadanie 4
+1. CREATE TABLE przetwory ( 
+id_przetworu INT(11) PRIMARY KEY AUTO_INCREMENT, 
+rok_ produkcji SMALLINT UNSIGNED DEFAULT '1654', id_wykonawcy INT(11), 
+zawartosc VARCHAR(40) NOT NULL, 
+dodatek VARCHAR(40) DEFAULT 'papryczka chilli', 
+id_konsumenta INT(11), 
+FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci), 
+FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci);
+
+Zadanie 5
+1. INSERT INTO postac (nazwa, rodzaj, data_ur, wiek) VALUES ('Johan', 'wiking', '0850-07-20', 30), ('Andrzejek', 'wiking', '0860-2-12', 20), ('Erik', 'wiking', '0846-01-01', 34), ('Janek', 'wiking', '0845-02-10', 35), ('Alojzy', 'wiking', '0840-12-24', 40);
+
+2. CREATE TABLE statek ( nazwa VARCHAR(40) NOT NULL PRIMARY KEY, 
+rodzaj ENUM('galera', 'langskip', 'tratwa') NOT NULL, 
+data_wodowania DATE NOT NULL, 
+max_ladownosc INT UNSIGNED NOT NULL
+);
+
+3. INSERT INTO statek (nazwa, rodzaj, data_wodowania, max_ladownosc) VALUES ('Schlezwig-Holstein', 'galera', '0860-09-01', 10000), ('ORP Orzel', 'langskip', '0844-01-06', 5000);
+
+4. 4) ALTER TABLE postac ADD COLUMN funkcja VARCHAR(40);
+
+5. UPDATE postac SET funkcja = 'kapitan' WHERE nazwa = 'Bjorn';
+
+6. ALTER TABLE postac ADD FOREIGN KEY (statek) REFERENCES statek(nazwa);
+
+7. UPDATE pistac set statek = 'Placek' WHERE rodzaj = 'wiking';
+
+8. DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
+
+9.DROP TABLE izba;
