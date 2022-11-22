@@ -63,9 +63,9 @@ max_ladownosc INT UNSIGNED NOT NULL
 
 5. UPDATE postac SET funkcja = 'kapitan' WHERE nazwa = 'Bjorn';
 
-6. ALTER TABLE postac ADD FOREIGN KEY (statek) REFERENCES statek(nazwa);
+6. ALTER TABLE postac ADD statek VARCHAR(40) REFERENCES statek(nazwa);
 
-7. UPDATE pistac set statek = 'Placek' WHERE rodzaj = 'wiking';
+7. UPDATE postac set statek = 'ORP Orzel' WHERE rodzaj = 'wiking';
 
 8. DELETE FROM izba WHERE nazwa_izby = 'spizarnia';
 
