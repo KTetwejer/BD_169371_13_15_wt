@@ -21,4 +21,19 @@ a) UPDATE postac SET statek ='ORP Orzel' WHERE nazwa regexp 'a';
 
 b) UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE data_wodowania >= '1901-01-01' and data_wodowania <='2000-12-31';
 
-c)
+c) ALTER TABLE postac ADD CHECK(wiek <= 1000);
+
+Zadanie 4
+a) ALTER Table postac MODIFY rodzaj ENUM('wiking','ptak','kobieta','syrena','waz');
+INSERT INTO postac (id_postaci,pesel,nazwa,rodzaj,data_ur,wiek) VALUES('11','123', 'Loko', 'waz', '880-01-01', '2');
+b) CREATE TABLE Marynarz SELECT*FROM postac WHERE statek IS NOT NULL;
+c) ALTER TABLE Marynarz ADD PRIMARY KEY(pesel);
+ALTER TABLE Marynarz ADD FOREIGN KEY (statek) REFERENCES statek(nazwa);
+
+Zadanie 5
+a) UPDATE postac SET statek = NULL where statek = 'ORP Orzel';
+b) DELETE from postac WHERE id_postaci = '4';
+c) DELETE FROM statek;
+d) DROP TABLE statek;
+e) CREATE TABLE zwierz (id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, nazwa VARCHAR(40), wiek INT);
+f) INSERT INTO zwierz (nazwa, wiek) SELECT nazwa, wiek FROM postac WHERE rodzaj = 'ptak' OR rodzaj = 'waz';
