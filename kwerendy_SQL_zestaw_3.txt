@@ -22,7 +22,7 @@ Zadanie 3
 
 1. SELECT * FROM zasob WHERE MONTH(datapozyskania) BETWEEN 7 and 8;
 
-2. SELECT * FROM zasob ORDER BY waga;
+2. SELECT * FROM zasob WHERE waga != ORDER BY waga;
 
 3. SELECT * FROM kreatura ORDER BY dataUr DESC LIMIT 5;
 
